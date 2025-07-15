@@ -6,6 +6,8 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { Lesson } from './lesson/lesson.entity';
 import { configValidationSchema } from './config.schema';
+import { StudentModule } from './student/student.module';
+import { Student } from './student/student.entity';
 
 @Module({
   imports: [
@@ -21,7 +23,7 @@ import { configValidationSchema } from './config.schema';
           type: 'mongodb',
           url: `mongodb://${configService.get('DB_HOST')}/school`,
           synchronize: true,
-          entities: [Lesson],
+          entities: [Lesson, Student],
         };
       },
     }),
@@ -31,6 +33,7 @@ import { configValidationSchema } from './config.schema';
       autoSchemaFile: true,
     }),
     LessonModule,
+    StudentModule,
   ],
 })
 export class AppModule {}
