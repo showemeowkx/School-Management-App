@@ -15,6 +15,20 @@ export class StudentService {
     return await this.studentRepository.findOneBy({ id });
   }
 
+  async getManyStudents(studentIds: string[]): Promise<Student[]> {
+    const students: Student[] = [];
+
+    for (const id of studentIds) {
+      const student = await this.studentRepository.findOneBy({ id });
+
+      if (!student) continue;
+
+      students.push(student);
+    }
+
+    return students;
+  }
+
   async getAllStudents(): Promise<Student[] | null> {
     return await this.studentRepository.find();
   }
