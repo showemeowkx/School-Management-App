@@ -8,6 +8,11 @@ import { CreateStudentInput } from './create-student.input';
 export class StudentResolver {
   constructor(private studentService: StudentService) {}
 
+  @Query((returns) => StudentType)
+  getStudent(@Args('id') id: string) {
+    return this.studentService.getStudent(id);
+  }
+
   @Query((returns) => [StudentType])
   getAllStudents() {
     return this.studentService.getAllStudents();

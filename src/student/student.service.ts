@@ -11,6 +11,10 @@ export class StudentService {
     @InjectRepository(Student) private studentRepository: Repository<Student>,
   ) {}
 
+  async getStudent(id: string): Promise<Student | null> {
+    return await this.studentRepository.findOneBy({ id });
+  }
+
   async getAllStudents(): Promise<Student[] | null> {
     return await this.studentRepository.find();
   }
