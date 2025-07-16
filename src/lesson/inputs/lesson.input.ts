@@ -1,6 +1,6 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-import { Field, InputType } from '@nestjs/graphql';
-import { IsDateString, IsNotEmpty } from 'class-validator';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { Field, ID, InputType } from '@nestjs/graphql';
+import { IsDateString, IsNotEmpty, IsUUID } from 'class-validator';
 
 @InputType()
 export class CreateLessonInput {
